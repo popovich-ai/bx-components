@@ -1,3 +1,0 @@
-<?php
-$MESS['PAI_SIMPLENEWS_ELEMENTS_LIST_TEMPLATE_TITLE'] = 'Новости';
-?>

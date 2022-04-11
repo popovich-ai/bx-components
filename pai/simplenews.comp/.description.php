@@ -12,5 +12,6 @@ $arComponentDescription = array(
 		"ID" => 'pai.simplenews',
 		"NAME" => Loc::getMessage('PAI_SIMPLENEWS_ELEMENTS_LIST_DESCRIPTION_GROUP'),
 	),
+	"CACHE_PATH" => "Y",
 );
 ?>

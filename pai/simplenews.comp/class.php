@@ -10,7 +10,9 @@ class PaiSimplenewsElementListComponent extends CBitrixComponent
 	 * кешируемые ключи arResult
 	 * @var array()
 	 */
-	protected $cacheKeys = array();
+	protected $cacheKeys = array(
+		'ALL_ITEMS_CNT'
+	);
 
 	/**
 	 * дополнительные параметры, от которых должен зависеть кеш
@@ -279,8 +281,10 @@ class PaiSimplenewsElementListComponent extends CBitrixComponent
 
 		if ($this->arParams['SHOW_NAV'] == 'Y' && $this->arParams['COUNT'] > 0)
 		{
-			$this->arResult['NAV_STRING'] = $iterator->GetPageNavString('');
+			$this->arResult['NAV_STRING'] = $iterator->GetPageNavString('','round');
 		}
+
+		$this->arResult['ALL_ITEMS_CNT'] = $iterator->SelectedRowsCount();
 	}
 
 	/**
@@ -290,6 +294,9 @@ class PaiSimplenewsElementListComponent extends CBitrixComponent
 	{
 		if ($this->arResult['IBLOCK_ID'] && $this->arParams['CACHE_TAG_OFF'])
 			\CIBlock::enableTagCache($this->arResult['IBLOCK_ID']);
+
+		global $APPLICATION;
+		$APPLICATION->SetTitle(Loc::getMessage('PAI_SIMPLENEWS_ELEMENTS_LIST_CLASS_PAGE_TITLE',array('#XX#'=>$this->arResult['ALL_ITEMS_CNT'])));
 	}
 
 	/**
